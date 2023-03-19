@@ -91,6 +91,7 @@ npm run test
 
 - React - the web framework used
 - Firebase - data storage and real-time updates
+- React Router - to form the single page application
 
 # License
 
