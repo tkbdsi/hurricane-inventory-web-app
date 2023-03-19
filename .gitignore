@@ -20,7 +20,8 @@
 
 # database
 .env
-.firebaserc
+/.firebase
+.firebase*
 firebase.*
 firestore.*
 
