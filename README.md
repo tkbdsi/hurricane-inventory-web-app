@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-## Available Scripts
+# Prerequisites
 
-In the project directory, you can run:
+Before you can run the web app, you need to have the following software installed on your system:
 
-### `npm start`
+1. Node.js (version 12.x or higher)
+2. npm (version 6.x or higher)
+3. Git
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Fork the repository to create your own copy:
 
-### `npm test`
+```
+https://github.com/tkbdsi/hurricane-inventory-web-app.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Clone your forked repository:
 
-### `npm run build`
+```
+git clone https://github.com/your-username/project-name.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Change to the project directory
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+cd project-name
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Install dependencies
 
-### `npm run eject`
+```
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Firebase Configuration
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To set up your own Firebase configuration, follow these steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Go to the [Firebase console](https://console.firebase.google.com/)
+2. After creating the project, click on "Add Firebase to your web app" and copy the configuration object.
+3. Create a .env file in the root of the project directory and paste your Firebase configuration:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+REACT_APP_API_KEY=your-firebase-api-key
+REACT_APP_AUTH_DOMAIN=your-firebase-auth-domain
+REACT_APP_DATABASE_URL=your-firebase-database-url
+REACT_APP_PROJECT_ID=your-firebase-project-id
+REACT_APP_STORAGE_BUCKET=your-firebase-storage-bucket
+REACT_APP_MESSAGING_SENDER_ID=your-firebase-messaging-sender-id
+REACT_APP_APP_ID=your-firebase-app-id
+REACT_APP_MEASUREMENT_ID=your-firebase-measurement-id
+```
 
-## Learn More
+4. Save the `.env` file.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Running the App
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To run the app in development mode, execute the following command:
 
-### Code Splitting
+```
+npm run start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Open your browser and navigate to http://localhost:3000 to view the web app in action.
 
-### Analyzing the Bundle Size
+# Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+--- TBD ---
 
-### Making a Progressive Web App
+# Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+--- coming soon ---
 
-### Advanced Configuration
+# Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To run the test suite, execute the following command:
 
-### Deployment
+```
+npm run test
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Deployment
 
-### `npm run build` fails to minify
+--- maybe coming soon, this is up to the user generally ---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Bill of Software and Libraries
+
+- React - the web framework used
+- Firebase - data storage and real-time updates
+
+# License
+
+-- tbd --
+
+# Acknowledgements
+
+---
