@@ -1,5 +1,16 @@
+// REACT ROUTER
+// My Views
+import Main from './views/Main';
+
+// Third Party - React Router
+import { Routes, Route } from 'react-router-dom';
+
 const App = () => {
-  return <div>The App</div>;
+  return (
+    <Routes>
+      <Route path='/' element={<Main />} />
+    </Routes>
+  );
 };
 
 export default App;

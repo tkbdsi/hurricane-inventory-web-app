@@ -83,6 +83,8 @@ To run the test suite, execute the following command:
 npm run test
 ```
 
+Note that the testing sweet currently using the default React Testing Library (RTL)
+
 # Deployment
 
 --- maybe coming soon, this is up to the user generally ---
