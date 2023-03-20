@@ -1,6 +1,5 @@
-// REACT ROUTER
 // My Views
-import Main from './views/Main';
+import Main from './views/Main/Main';
 
 // Third Party - React Router
 import { Routes, Route } from 'react-router-dom';
