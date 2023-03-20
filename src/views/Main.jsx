@@ -7,7 +7,7 @@ const Main = () => {
     <div>
       <Link to='/pantry'>Pantry</Link>
       <Link to='/h2o'>H20</Link>
-      <div>Garage Cabinet</div>
+      <Link to='/garagecabinet'>Garage Cabinet</Link>
       <div>Garage Tote</div>
     </div>
   );
