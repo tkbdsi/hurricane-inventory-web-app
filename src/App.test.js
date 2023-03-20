@@ -30,10 +30,10 @@ test('renders a link to a garage tote page', () => {
 
 test('able to navigate to the pantry page', async () => {
   render(<App />, { wrapper: BrowserRouter });
+  const user = userEvent.setup();
+
   const linkElement = screen.getByRole('link', { name: /pantry/i });
   expect(linkElement).toBeInTheDocument();
-
-  const user = userEvent.setup();
 
   await user.click(linkElement);
   expect(screen.getByText(/pantry contents/i)).toBeInTheDocument();
