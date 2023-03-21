@@ -4,46 +4,25 @@ import './pantry.css';
 
 import PantryHeader from './PantryHeader';
 
-const testData = [
-  {
-    id: 1,
-    name: 'Peanut Butter',
-    quantity: 2,
-    units: 'jar',
-    expires: new Date('April 1, 2024'),
-  },
-  {
-    id: 2,
-    name: 'Oreos',
-    quantity: 1,
-    units: 'package',
-    expires: new Date('June 1, 2048'),
-  },
-  {
-    id: 3,
-    name: 'Ritz Crackers',
-    quantity: 1,
-    units: 'box',
-    expires: new Date('May 25, 2025'),
-  },
-];
+const Pantry = ({pantryData}) => {
 
-const Pantry = () => {
   return (
     <>
       <PantryHeader />
       <h3 className='title'>Pantry Contents</h3>
       <table className='table'>
         <thead>
+          <tr>
           <th>Food Item</th>
           <th>Quantity</th>
           <th>Units</th>
           <th>Expiration</th>
           <th>{''}</th>
           <th>{''}</th>
+          </tr>
         </thead>
         <tbody>
-          {testData.map((data) => (
+          {pantryData && pantryData.map((data) => (
             <tr key={data.id}>
               <td>{data.name}</td>
               <td>{data.quantity}</td>
@@ -58,8 +37,10 @@ const Pantry = () => {
             </tr>
           ))}
         </tbody>
-        <button>Create New Entry</button>
       </table>
+      <div className='button-new-entry'>
+        <button >Create New Entry</button>
+      </div>
     </>
   );
 };
