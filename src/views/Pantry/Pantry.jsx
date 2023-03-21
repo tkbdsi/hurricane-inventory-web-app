@@ -4,22 +4,21 @@ import './pantry.css';
 
 import PantryHeader from './PantryHeader';
 
-const Pantry = ({pantryData, createView, setCreateView, pantryCreate}) => {
+const Pantry = ({pantryData, createView, setCreateView, pantryCreate, pantryDelete}) => {
 
   const [formFoodItem, setFormFoodItem] = useState("");
   const [formFoodQuantity, setFormFoodQuantity] = useState(1);
   const [formFoodUnits, setFormFoodUnits] = useState("");
   const [formFoodExperiation, setFormFoodExperiation] = useState(new Date());
 
-  const formatDataForFormSubmission = (incomingString) => {
-
-    const incomingStringArray = incomingString.trim().split('-');
-    if (incomingStringArray.length === 3) {
-      setFormFoodExperiation(incomingString);
-      console.log(incomingString)
-    }
-
-  }
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  pantryCreate(e);
+  setFormFoodItem("");
+  setFormFoodQuantity(1);
+  setFormFoodUnits("");
+  setFormFoodExperiation(new Date());
+ }
 
   return (
     <>
@@ -47,7 +46,7 @@ const Pantry = ({pantryData, createView, setCreateView, pantryCreate}) => {
                 <button>Update Entry</button>
               </td>
               <td>
-                <button>Delete Entry</button>
+                <button onClick={() => pantryDelete(data.id)}>Delete Entry</button>
               </td>
             </tr>
           ))}
@@ -55,22 +54,22 @@ const Pantry = ({pantryData, createView, setCreateView, pantryCreate}) => {
       </table>
       <div className={createView ? 'create-view ' : 'create-view-false'}>
         <div className='formWrapper'>
-            <form onSubmit={pantryCreate}>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="pantryFoodItem">
                   Food Item{" "}
-                <input type="text" name="pantryFoodItem" value={formFoodItem} onChange={(e) => setFormFoodItem(e.target.value)}/>
+                <input type="text" name="pantryFoodItem" value={formFoodItem} onChange={(e) => setFormFoodItem(e.target.value)} required/>
                 </label>
                 <label htmlFor="pantryFoodQuantity">
                   Quantity{" "}
-                <input type="number" name="pantryFoodQuantity" value={formFoodQuantity} min={0} step={1} onChange={(e) => setFormFoodQuantity(e.target.value)} />
+                <input type="number" name="pantryFoodQuantity" value={formFoodQuantity} min={0} step={1} onChange={(e) => setFormFoodQuantity(e.target.value)} required/>
                 </label>
                 <label htmlFor="pantryFoodUnits">
-                  Quantity{" "}
-                <input type="text" name="pantryFoodUnits" value={formFoodUnits} onChange={(e) => setFormFoodUnits(e.target.value)}/>
+                  Units{" "}
+                <input type="text" name="pantryFoodUnits" value={formFoodUnits} onChange={(e) => setFormFoodUnits(e.target.value)} required/>
                 </label>
                 <label htmlFor="pantryFoodDate">
                   Expiration Date{" "}
-                <input type="date" name="pantryFoodDate" value={formFoodExperiation} onChange={(e) => setFormFoodExperiation(e.target.value) }/>
+                <input type="date" name="pantryFoodDate" value={formFoodExperiation} onChange={(e) => setFormFoodExperiation(e.target.value)} required/>
                 </label>
                 <button type="submit">Finish Adding</button>
             </form>

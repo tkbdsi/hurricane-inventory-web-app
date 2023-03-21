@@ -45,7 +45,7 @@ const App = () => {
 
   // Load the initial states
   useEffect( () => {
-    setPantryData(pantryJSON);
+    pantryRead(pantryJSON);
   },[])
 
   // handle Pantry modifications
@@ -62,6 +62,18 @@ const App = () => {
     setPantryData([...pantryData, tempPantryEntry]);
   }
 
+  const pantryRead = (data) => {
+    setPantryData(data);
+  }
+
+  const pantryUpdate = () => {}
+
+  const pantryDelete = (id) => {
+    const tempPantryFilter = pantryData.filter( (entry) => entry.id !== id);
+    const confirm = window.confirm('Delete this entry from your Pantry?');
+    if (confirm) setPantryData(tempPantryFilter);
+  }
+
   return (
     <Routes>
       <Route path='/' element={<Main />} />
@@ -71,6 +83,7 @@ const App = () => {
           createView={createView}
           setCreateView={setCreateView}
           pantryCreate={pantryCreate}
+          pantryDelete={pantryDelete}
         />} 
       />
       <Route path='/h20' element={<H20 />} />
