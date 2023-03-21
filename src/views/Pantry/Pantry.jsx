@@ -1,10 +1,25 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './pantry.css';
 
 import PantryHeader from './PantryHeader';
 
-const Pantry = ({pantryData}) => {
+const Pantry = ({pantryData, createView, setCreateView, pantryCreate}) => {
+
+  const [formFoodItem, setFormFoodItem] = useState("");
+  const [formFoodQuantity, setFormFoodQuantity] = useState(1);
+  const [formFoodUnits, setFormFoodUnits] = useState("");
+  const [formFoodExperiation, setFormFoodExperiation] = useState(new Date());
+
+  const formatDataForFormSubmission = (incomingString) => {
+
+    const incomingStringArray = incomingString.trim().split('-');
+    if (incomingStringArray.length === 3) {
+      setFormFoodExperiation(incomingString);
+      console.log(incomingString)
+    }
+
+  }
 
   return (
     <>
@@ -38,9 +53,33 @@ const Pantry = ({pantryData}) => {
           ))}
         </tbody>
       </table>
-      <div className='button-new-entry'>
-        <button >Create New Entry</button>
+      <div className={createView ? 'create-view ' : 'create-view-false'}>
+        <div className='formWrapper'>
+            <form onSubmit={pantryCreate}>
+                <label htmlFor="pantryFoodItem">
+                  Food Item{" "}
+                <input type="text" name="pantryFoodItem" value={formFoodItem} onChange={(e) => setFormFoodItem(e.target.value)}/>
+                </label>
+                <label htmlFor="pantryFoodQuantity">
+                  Quantity{" "}
+                <input type="number" name="pantryFoodQuantity" value={formFoodQuantity} min={0} step={1} onChange={(e) => setFormFoodQuantity(e.target.value)} />
+                </label>
+                <label htmlFor="pantryFoodUnits">
+                  Quantity{" "}
+                <input type="text" name="pantryFoodUnits" value={formFoodUnits} onChange={(e) => setFormFoodUnits(e.target.value)}/>
+                </label>
+                <label htmlFor="pantryFoodDate">
+                  Expiration Date{" "}
+                <input type="date" name="pantryFoodDate" value={formFoodExperiation} onChange={(e) => setFormFoodExperiation(e.target.value) }/>
+                </label>
+                <button type="submit">Finish Adding</button>
+            </form>
+          </div>
       </div>
+      <div className='button-new-entry'>
+        {createView ? null : <button onClick={() => setCreateView(createView => !createView)}>Create New Entry</button>}
+      </div>
+
     </>
   );
 };

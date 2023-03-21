@@ -51,3 +51,46 @@ td {
   padding: 10px;
   border: 1px solid #ccc;
 }
+
+/* Forms */
+.formWrapper {
+  margin-top: 0.3rem;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+form {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+label {
+  font-size: 1.2rem;
+  letter-spacing: 0.2px;
+}
+
+input[type="text"] {
+  border: 1px solid black;
+  font-size: 1.0rem;
+  padding: 0.5rem;
+  width: 200px;
+}
+
+input[type="number"] {
+  border: 1px solid black;
+  font-size: 1.0rem;
+  padding: 0.5rem;
+  width: 200px;
+}
+
+input[type="date"] {
+  border: 1px solid black;
+  font-size: 1.0rem;
+  padding: 0.5rem;
+  width: 200px;
+}

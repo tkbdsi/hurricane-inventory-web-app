@@ -17,21 +17,21 @@ import { Routes, Route } from 'react-router-dom';
 const App = () => {
   const pantryJSON = [
     {
-      id: 1,
+      id: 0,
       name: 'Peanut Butter',
       quantity: 2,
       units: 'jar',
       expires: new Date('April 1, 2024'),
     },
     {
-      id: 2,
+      id: 1,
       name: 'Oreos',
       quantity: 1,
       units: 'package',
       expires: new Date('June 1, 2048'),
     },
     {
-      id: 3,
+      id: 2,
       name: 'Ritz Crackers',
       quantity: 1,
       units: 'box',
@@ -39,19 +39,40 @@ const App = () => {
     },
   ];
 
+  // State for Pantry
   const [pantryData, setPantryData] = useState([]);
+  const [createView, setCreateView] = useState(false);
 
   // Load the initial states
   useEffect( () => {
     setPantryData(pantryJSON);
   },[])
 
-  // handle Pantry additions
+  // handle Pantry modifications
+  const pantryCreate = (e) => {
+    e.preventDefault();
+    setCreateView(createView => !createView);
+    const tempPantryEntry = {
+      id: pantryData.length,
+      name: e.target["pantryFoodItem"].value,
+      quantity: parseInt(e.target["pantryFoodQuantity"].value),
+      units: e.target["pantryFoodUnits"].value,
+      expires: new Date(e.target["pantryFoodDate"].value),
+    }
+    setPantryData([...pantryData, tempPantryEntry]);
+  }
 
   return (
     <Routes>
       <Route path='/' element={<Main />} />
-      <Route path='/pantry' element={<Pantry pantryData={pantryData} />} />
+      <Route path='/pantry' element={
+        <Pantry 
+          pantryData={pantryData}
+          createView={createView}
+          setCreateView={setCreateView}
+          pantryCreate={pantryCreate}
+        />} 
+      />
       <Route path='/h20' element={<H20 />} />
       <Route path='/garagecabinet' element={<GarageCabinet />} />
       <Route path='/garagetote' element={<GarageTote />} />
