@@ -41,8 +41,8 @@ const App = () => {
 
   // State for Pantry
   const [pantryData, setPantryData] = useState([]);
-  const [createView, setCreateView] = useState(false);
-  const [updateView, setUpdateView] = useState(false);
+  const [pantryCreateView, setPantryCreateView] = useState(false);
+  const [pantryUpdateView, setPantryUpdateView] = useState(false);
 
   // Load the initial states
   useEffect( () => {
@@ -52,7 +52,7 @@ const App = () => {
   // handle Pantry modifications
   const pantryCreate = (e) => {
     e.preventDefault();
-    setCreateView(createView => !createView);
+    setPantryCreateView(createPantryView => !createPantryView);
     const tempPantryEntry = {
       id: pantryData.length,
       name: e.target["pantryFoodItem"].value,
@@ -67,9 +67,8 @@ const App = () => {
     setPantryData(data);
   }
 
-  const pantryUpdate = (e) => {
-    e.preventDefault();
-    setUpdateView(updateView => !updateView);
+  const pantryUpdate = (id) => {
+    setPantryUpdateView(pantryUpdateView => !pantryUpdateView);
   }
 
   const pantryDelete = (id) => {
@@ -84,9 +83,12 @@ const App = () => {
       <Route path='/pantry' element={
         <Pantry 
           pantryData={pantryData}
-          createView={createView}
-          setCreateView={setCreateView}
+          createView={pantryCreateView}
+          setCreateView={setPantryCreateView}
           pantryCreate={pantryCreate}
+          updateView={pantryUpdateView}
+          setUpdateView={setPantryUpdateView}
+          pantryUpdate={pantryUpdate}
           pantryDelete={pantryDelete}
         />} 
       />
