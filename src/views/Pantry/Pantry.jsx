@@ -10,6 +10,17 @@ const Pantry = ({pantryData, createView, setCreateView, pantryCreate, pantryDele
   const [formFoodQuantity, setFormFoodQuantity] = useState(1);
   const [formFoodUnits, setFormFoodUnits] = useState("");
   const [formFoodExperiation, setFormFoodExperiation] = useState(new Date());
+  const [todaysDate, setTodaysDate] = useState(new Date());
+
+  useEffect( () => {
+    setTodaysDate(new Date(Date.now()));
+  },[])
+
+  const calculateTimeDifference = (d1, d2) => {
+    let timeDifference = Math.floor((d1 - d2)/(1000*60*60*24));
+    if (timeDifference < 0) timeDifference += 1;
+    return timeDifference;
+  }
 
  const handleSubmit = (e) => {
   e.preventDefault();
@@ -24,6 +35,7 @@ const Pantry = ({pantryData, createView, setCreateView, pantryCreate, pantryDele
     <>
       <PantryHeader />
       <h3 className='title'>Pantry Contents</h3>
+      <h4 className='title'> {todaysDate.toLocaleString()}</h4>
       <table className='table'>
         <thead>
           <tr>
@@ -31,6 +43,7 @@ const Pantry = ({pantryData, createView, setCreateView, pantryCreate, pantryDele
           <th>Quantity</th>
           <th>Units</th>
           <th>Expiration</th>
+          <th>Days Left</th>
           <th>{''}</th>
           <th>{''}</th>
           </tr>
@@ -42,6 +55,7 @@ const Pantry = ({pantryData, createView, setCreateView, pantryCreate, pantryDele
               <td>{data.quantity}</td>
               <td>{data.units}</td>
               <td>{data.expires.toLocaleDateString()}</td>
+              <td>{calculateTimeDifference(data.expires,todaysDate)}</td>
               <td>
                 <button>Update Entry</button>
               </td>

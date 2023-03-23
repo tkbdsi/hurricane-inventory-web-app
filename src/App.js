@@ -21,14 +21,14 @@ const App = () => {
       name: 'Peanut Butter',
       quantity: 2,
       units: 'jar',
-      expires: new Date('April 1, 2024'),
+      expires: new Date('March 24, 2024'),
     },
     {
       id: 1,
       name: 'Oreos',
       quantity: 1,
       units: 'package',
-      expires: new Date('June 1, 2048'),
+      expires: new Date('March 20, 2023'),
     },
     {
       id: 2,
@@ -42,6 +42,7 @@ const App = () => {
   // State for Pantry
   const [pantryData, setPantryData] = useState([]);
   const [createView, setCreateView] = useState(false);
+  const [updateView, setUpdateView] = useState(false);
 
   // Load the initial states
   useEffect( () => {
@@ -66,7 +67,10 @@ const App = () => {
     setPantryData(data);
   }
 
-  const pantryUpdate = () => {}
+  const pantryUpdate = (e) => {
+    e.preventDefault();
+    setUpdateView(updateView => !updateView);
+  }
 
   const pantryDelete = (id) => {
     const tempPantryFilter = pantryData.filter( (entry) => entry.id !== id);
