@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import './pantry.css';
 
 import PantryHeader from './PantryHeader';
+import Header from '../Header/Header';
 
 const Pantry = ({pantryData, createView, setCreateView, pantryCreate, pantryDelete}) => {
 
@@ -33,7 +34,7 @@ const Pantry = ({pantryData, createView, setCreateView, pantryCreate, pantryDele
 
   return (
     <>
-      <PantryHeader />
+      <Header />
       <h3 className='title'>Pantry Contents</h3>
       <h4 className='title'> {todaysDate.toLocaleString()}</h4>
       <table className='table'>
