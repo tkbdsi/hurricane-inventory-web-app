@@ -28,22 +28,26 @@ const Pantry = ({pantryData, createView, setCreateView, pantryCreate, updateView
     return timeDifference;
   }
 
-const clickUpdate = (data) => {
-  setUpdateView(updateView => !updateView);
-  let dateHandle = new Date(data.expires);
+const reformatDate = (dateToFormat) => {
+  let dateHandle = new Date(dateToFormat);
   let dateYear = dateHandle.getFullYear();
   let dateDay = dateHandle.getDate();
   let dateMonth = dateHandle.getMonth() + 1;
   if (dateDay < 10) dateDay = `0${dateDay}`;
   if (dateMonth < 10) dateMonth = `0${dateMonth}`;
 
+  return `${dateYear}-${dateMonth}-${dateDay}`;
+}
+
+const clickUpdate = (data) => {
+  setUpdateView(updateView => !updateView);
+
   console.log(data);
 
-  console.log(`${dateYear}-${dateDay}-${dateMonth}`);
   setUpdateFoodItem(data.name);
   setUpdateFoodQuantity(data.quantity);
   setUpdateFoodUnits(data.units);
-  setUpdateFoodExperiation(`${dateYear}-${dateMonth}-${dateDay}`);
+  setUpdateFoodExperiation(reformatDate(data.expires));
 }
 
 const handleUpdate = (e) => {
@@ -113,7 +117,7 @@ const handleUpdate = (e) => {
                 </label>
                 <label htmlFor="pantryFoodDate">
                   Expiration Date{" "}
-                <input type="date" name="pantryFoodDate" value={formFoodExperiation} onChange={(e) => setUpdateFoodExperiation(e.target.value)} required/>
+                <input type="date" name="pantryFoodDate" value={formFoodExperiation} onChange={(e) => setFormFoodExperiation(e.target.value)} required/>
                 </label>
                 <span>
                   <button type='button' style={{backgroundColor: 'red'}} onClick={() => setCreateView(createView => !createView)}>Cancel</button>
