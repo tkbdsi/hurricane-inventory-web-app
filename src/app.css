@@ -1,0 +1,96 @@
+.title {
+  text-align: center;
+}
+
+/* Buttons */
+button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: rgb(62, 62, 255);
+  color: rgb(251, 251, 251);
+}
+
+button:hover {
+  background-color: rgb(93, 93, 255);
+  color: rgb(241, 241, 241);
+}
+
+/* Center the table */
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the header row */
+thead th {
+  background-color: #444;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+/* Alternating background colors for table body rows */
+tbody tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+/* Hover effect for table rows */
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+/* Style table cells */
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Forms */
+.formWrapper {
+  margin-top: 0.3rem;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+form {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+label {
+  font-size: 1.2rem;
+  letter-spacing: 0.2px;
+}
+
+input[type="text"] {
+  border: 1px solid black;
+  font-size: 1.0rem;
+  padding: 0.5rem;
+  width: 200px;
+}
+
+input[type="number"] {
+  border: 1px solid black;
+  font-size: 1.0rem;
+  padding: 0.5rem;
+  width: 200px;
+}
+
+input[type="date"] {
+  border: 1px solid black;
+  font-size: 1.0rem;
+  padding: 0.5rem;
+  width: 200px;
+}
